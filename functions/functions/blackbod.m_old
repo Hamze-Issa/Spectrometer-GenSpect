@@ -1,0 +1,38 @@
+function B=blackbod(wavenum,T)
+
+% Function to calculate radiances for a black body at uniform temperature T (K)
+% over the wavenumbers defined in the row vector wavnum (cm-1)
+%
+% USE: radiance=blackbod(WAVENUM,TEMP);
+%
+% If WAVENUM and TEMP are row and column vectors, respectively, then BLACKBOD
+% will return the corresponding matrix (n_v x n_T) of planck function values.
+% It does so according to the formula B(v,T)=2h*c^2*v^3/(exp(hcv/kT)-1)
+% The constants 2hc^2 and hc/kT have 7 significant digits of precision
+%
+% BLACKBOD calls no other special functions
+%
+% Inputs:
+% WAVENUM is the wavenumber of radiation (row vector) (cm-1)
+% TEMP is temperature scalar or 2-vector of start and finish values (linear interp assumed).
+% where radiance is in units (Wm-2sr-1(cm-1)-1).
+%
+% (C) Ben Quine 28-JAN-1998
+%
+
+if size(T,1)==1
+%	T=linspace(T,T,size(wavenum,2));
+elseif size(T,1)==2
+	T=linspace(T(1),T(2),size(wavenum,2));
+end
+
+c1=1.191062e-8; %2hc^2 1st radiation constant
+c2=1.438786;    %hc/kT 2nd radiation constant
+
+B=c1.*(wavenum.^3)./(exp((c2./T).*wavenum)-1);
+
+%h  = 4.135701e-15;		% Plancks Constant (eVs)
+%c  = 2.997924580e+8;		% Speed of light in a Vacuum (m/s)
+%kB = 1.380662e-23;		% Boltzmann Constant (JK-1)
+
+% B=2*h*c^2.*(wavenum.^3)./(exp(h*c.*wavenum./(kB.*T))-1);	% physics speak in h,c,k!
