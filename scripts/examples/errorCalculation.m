@@ -1,7 +1,7 @@
 numberOfMainIterations = 146;
 nominatedBestPaths = cell(2, numberOfMainIterations);
 load measuredPath;
-for i = 50 : numberOfMainIterations
+for i = 1 : numberOfMainIterations
     % fname = sprintf('./results/resultsOld/iteration%d', i);
     fname = sprintf('../../scratch/hissa/results/iteration%d', i); 
     load (fname);

@@ -1,5 +1,5 @@
 function pathsMaster = looper(combinations, constants, gencalc, pathsMaster)
-    for mixrat = 4901 : combinations.counter
+    for mixrat = 1 : combinations.counter
             disp('Generate Atmospheric Cells for Calculation...')
             mixrats = combinations.mixrats{mixrat};
             cells=atmcell(constants.numberOfCells,100,27,16590,constants.zpt,constants.gas,constants.iso,mixrats,'z');
