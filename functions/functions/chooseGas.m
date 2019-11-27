@@ -1,3 +1,12 @@
+%{
+The MeznSat Project
+Atmospheric Retrieval and Data Processing
+Hamzeh Issa
+
+chooseGas: returns the gas concentration for the input gas ID
+Although unnecessary, this method is used for compatability
+%}
+
 function conc = chooseGas(variables, gas, m)
     if (gas == 1)
         conc = variables.gasesMR.co(:,m);
